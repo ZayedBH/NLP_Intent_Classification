@@ -63,7 +63,7 @@ Opening `index.html` directly or using only `npm run preview` does not start the
 
 ## Deploy to Vercel
 
-1. Import `ZayedBH/NLP_Intent_Classification`. Keep these files in the repository: `models/intent-model.joblib`, `intentlab/`, `api/`, `public/model-report.json`, `public/data-license.txt`, `requirements.txt`, `.python-version`, `package-lock.json`, and `vercel.json`.
+1. Import `ZayedBH/NLP_Intent_Classification`. Keep these files in the repository: `models/intent-model.joblib`, `intentlab/`, `api/`, `public/model-report.json`, `public/data-license.txt`, `requirements.txt`, `pyproject.toml`, `.python-version`, `package-lock.json`, and `vercel.json`.
 2. In Vercel, choose **Add New → Project**, import that repository, and select the project root.
 3. Use the **Vite** framework preset, `npm run build` as the build command and `dist` as the output directory. The included configuration supplies these settings.
 4. Deploy. Vercel discovers `api/classify.py` and `api/health.py` as Python Functions. No environment variables or external AI credentials are required.
@@ -72,6 +72,8 @@ Opening `index.html` directly or using only `npm run preview` does not start the
 Do not set `dist` as the source/root directory: the Python API and saved model must remain in the deployment source. If model imports fail, check function logs and confirm all model/runtime files were included. The first request can take longer while a new function initializes.
 
 **Hosted Vercel deployment has not been performed.** The actual HTTP handler, local Vite proxy, desktop/mobile flows, and production frontend build are verified locally. The Vercel source configuration is prepared for Zayed to deploy; hosted packaging and cold-start behavior need validation on his deployment.
+
+Python is restricted to **3.12** in `pyproject.toml` so the pinned scientific packages use compatible prebuilt wheels. If an earlier deployment attempted to compile NumPy or SciPy, deploy the latest commit with the build cache disabled.
 
 ## Model and data
 

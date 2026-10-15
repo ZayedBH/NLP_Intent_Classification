@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DIRECTORIES = {"src", "intentlab", "api", "scripts", "tests", "e2e", "public", "models", "data", "docs"}
 ROOT_FILES = {"package.json", "package-lock.json", "requirements.txt", "requirements-dev.txt", "tsconfig.json",
               "vite.config.ts", "playwright.config.ts", "pytest.ini", "vercel.json", "index.html",
-              ".python-version", ".gitignore", "README.md", "START_HERE_ZAYED.md"}
+              ".python-version", "pyproject.toml", ".gitignore", "README.md", "START_HERE_ZAYED.md"}
 
 def main():
     destination = ROOT / "delivery"
