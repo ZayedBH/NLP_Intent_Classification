@@ -5,9 +5,10 @@ from urllib.request import Request, urlopen
 from urllib.error import HTTPError
 import pytest
 
-@pytest.fixture(scope="module")
-def endpoint():
-    from intentlab.http import handler
+@pytest.fixture(params=["intentlab.http", "api.classify", "api.health"])
+def endpoint(request):
+    from importlib import import_module
+    handler = import_module(request.param).handler
     server = ThreadingHTTPServer(("127.0.0.1", 0), handler)
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
