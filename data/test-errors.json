@@ -1,0 +1,26 @@
+[
+  {
+    "text": "I need assistance tocancel order {{Order Number}}",
+    "label": "cancel_order",
+    "group": "234",
+    "predicted": "track_order"
+  },
+  {
+    "text": "cance order {{Order Number}}",
+    "label": "cancel_order",
+    "group": "31",
+    "predicted": "track_order"
+  },
+  {
+    "text": "canmcel order {{Order Number}}",
+    "label": "cancel_order",
+    "group": "43",
+    "predicted": "track_order"
+  },
+  {
+    "text": "can you help me cancelong purchase {{Order Number}}?",
+    "label": "cancel_order",
+    "group": "28",
+    "predicted": "track_order"
+  }
+]
