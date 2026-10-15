@@ -1,10 +1,22 @@
-# IntentLab
+# IntentLab | NLP-Based User Intent Classification
 
-An interactive **NLP-Based User Intent Classification System** for Zayed's course project. NLTK tokenizes English customer-support messages, TF-IDF represents words and phrases, and an offline-trained classifier predicts one of eight intents.
+**Zayed Bin Hassan | ASI23CA064**  
+NLP course project
+
+An interactive customer-support intent classifier. NLTK tokenizes English customer-support messages, TF-IDF represents words and phrases, and an offline-trained classifier predicts one of eight intents.
 
 Start with [START_HERE_ZAYED.md](START_HERE_ZAYED.md) for beginner instructions.
 
-Email delivery may use two ZIPs to keep individual attachment-transfer requests small: `IntentLab_Source_and_Model.zip` and `IntentLab_Original_Dataset.zip`. Extract both into the same parent directory and merge their `IntentLab` folders. Together they contain the complete project. The source archive alone can run inference; the dataset archive supplies the full original CSV for retraining. The complete single ZIP also remains in the original workspace's `delivery/` folder.
+## Demo and report
+
+**Live demo:** Deployment to Vercel is pending. The deployed URL will be added after Zayed deploys the project and its UI and API are verified.
+
+- [Course project report (PDF)](report/Zayed_Bin_Hassan_IntentLab_Course_Project_Report.pdf)
+- [Editable project report (Word)](report/Zayed_Bin_Hassan_IntentLab_Course_Project_Report.docx)
+- [Beginner setup guide](START_HERE_ZAYED.md)
+- [Demo and viva notes](docs/DEMO_AND_VIVA.md)
+
+![IntentLab desktop classification result](docs/screenshots/desktop-result.png)
 
 ## Features
 
@@ -18,7 +30,14 @@ Email delivery may use two ZIPs to keep individual attachment-transfer requests 
 
 ## Local setup
 
-Use Node.js 22 LTS and Python 3.12 (recommended; development was also tested with Python 3.13.5). From the extracted project folder:
+Use Node.js 22 LTS and Python 3.12 (recommended; development was also tested with Python 3.13.5). Clone this repository, then install the dependencies:
+
+```powershell
+git clone https://github.com/ZayedBH/NLP_Intent_Classification.git
+cd NLP_Intent_Classification
+```
+
+From the project folder:
 
 ```powershell
 python -m venv .venv
@@ -44,7 +63,7 @@ Opening `index.html` directly or using only `npm run preview` does not start the
 
 ## Deploy to Vercel
 
-1. Upload the extracted source to your own GitHub repository, including `models/intent-model.joblib`, `intentlab/`, `api/`, `public/model-report.json`, `public/data-license.txt`, `requirements.txt`, `.python-version`, `package-lock.json`, and `vercel.json`.
+1. Import `ZayedBH/NLP_Intent_Classification`. Keep these files in the repository: `models/intent-model.joblib`, `intentlab/`, `api/`, `public/model-report.json`, `public/data-license.txt`, `requirements.txt`, `.python-version`, `package-lock.json`, and `vercel.json`.
 2. In Vercel, choose **Add New → Project**, import that repository, and select the project root.
 3. Use the **Vite** framework preset, `npm run build` as the build command and `dist` as the output directory. The included configuration supplies these settings.
 4. Deploy. Vercel discovers `api/classify.py` and `api/health.py` as Python Functions. No environment variables or external AI credentials are required.
@@ -82,7 +101,7 @@ Full report: `public/model-report.json`. Data source revision and SHA-256 hashes
 .venv\Scripts\python.exe scripts/train.py
 ```
 
-The full original CSV is included in the ZIP. The downloader restores the pinned public revision if needed. Training exports the saved model, actual partitions, error analysis and UI report. Training takes place offline from the API. Restart the Python server after retraining so its cached model reloads.
+The full original CSV is not tracked in this repository. The downloader retrieves the pinned public revision into `data/raw/bitext.csv`; the committed subset and partitions document the model dataset. Training exports the saved model, actual partitions, error analysis and UI report. Training takes place offline from the API. Restart the Python server after retraining so its cached model reloads.
 
 ## Tests
 
@@ -117,3 +136,11 @@ English only; single intent per message; no sentiment analysis, entity extractio
 ## Layout
 
 `src/` contains the React UI; `intentlab/` contains preprocessing, inference and the shared HTTP handler; `api/` contains Vercel entrypoints; `scripts/` contains data, training and local server tools; `models/` contains the trusted saved artifact; `data/` contains provenance, license, subset, partitions and mistakes; `docs/` contains the plan, demo notes and verification record.
+
+
+## Project author
+
+**Zayed Bin Hassan**  
+Registration number: **ASI23CA064**
+
+Dataset credit and redistribution terms remain with Bitext under [CDLA-Sharing-1.0](data/LICENSE-BITEXT.txt).
